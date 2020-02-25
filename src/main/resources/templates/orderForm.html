@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+<meta charset="ISO-8859-1">
+<title>Delivery details</title>
+</head>
+<body>
+	<h1>Provide delivery details:</h1>
+	<form method="POST" th:action="@{/orders}" th:object="${order}">
+		<div th:if="${#fields.hasErrors()}">
+			<span class="validationError">Please correct the problems
+				below and resubmit.</span>
+		</div>
+		<div>
+			<span class="validationError" th:if="${#fields.hasErrors('eid')}"
+				th:errors="*{eid}">EID is wrong!</span> <br />
+			<label for="eid">eid</label> <input type="text" th:field="*{eid}" />
+		</div>
+		<div>
+			<span class="validationError" th:if="${#fields.hasErrors('ccNumber')}"
+				th:errors="*{ccNumber}">CCnumber is wrong!</span> <br />
+			<label for="ccNumber">Credit card number:</label> <input type="text"
+				th:field="*{ccNumber}" />
+		</div>
+		<div>
+			<span class="validationError" th:if="${#fields.hasErrors('ccExpiration')}"
+				th:errors="*{ccExpiration}">CCExpiration is wrong!</span> <br />
+			<label for="ccExpiration"> Credit card expiration: <input
+				type="text" th:field="*{ccExpiration}" />
+			</label>
+		</div>
+		<div>
+			<span class="validationError" th:if="${#fields.hasErrors('ccCvv')}"
+				th:errors="*{ccCvv}">CCCvv is wrong!</span> <br />
+			<label for="ccCvv"> Credit card expiration: <input
+				type="text" th:field="*{ccCvv}" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Submit order" />
+		</div>
+
+	</form>
+</body>
+</html>
